@@ -1,0 +1,109 @@
+:root { --ink:#18324b; --muted:#627b91; --blue:#6e9fc2; --dark:#3c7199; --pale:#eaf4fa; --line:#d7e6ef; --white:#fff; }
+* { box-sizing:border-box; }
+body { margin:0; color:var(--ink); background:#f5f9fc; font-family:Georgia,'Times New Roman',serif; line-height:1.6; overflow-x: hidden; }
+body::before { content:''; position:fixed; inset:0 0 auto; height:390px; z-index:-1; background:linear-gradient(135deg,#dceef8,#f4f9fc 68%); border-radius:0 0 46px 46px; }
+a { color:inherit; }
+
+/* --- RAHASIA SMOOTH SCROLL VERTIKAL --- */
+html { scroll-behavior: smooth; }
+
+/* Animasi Load */
+@keyframes fadeInUp { 0% { opacity: 0; transform: translateY(25px); } 100% { opacity: 1; transform: translateY(0); } }
+.fade-in { opacity: 0; animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+.delay-1 { animation-delay: 0.1s; } .delay-2 { animation-delay: 0.2s; }
+
+/* Animasi Elemen saat Kena Scroll */
+.reveal { opacity: 0; transform: translateY(50px); transition: all 0.8s cubic-bezier(0.25, 0.8, 0.25, 1); }
+.reveal.active { opacity: 1; transform: translateY(0); }
+
+main { width:min(1080px,calc(100% - 40px)); margin:auto; }
+
+/* --- FLOATING GLASS NAVBAR --- */
+.site-header {
+    position: sticky; top: 20px; z-index: 1000; display: flex; align-items: center; justify-content: space-between;
+    width: min(1000px, calc(100% - 40px)); margin: 10px auto 40px; padding: 12px 30px;
+    background: rgba(255, 255, 255, 0.75); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.6); border-radius: 50px; box-shadow: 0 10px 30px rgba(24, 50, 75, 0.06); transition: all 0.3s ease;
+}
+.brand { display:flex; align-items:center; gap:10px; font:700 .83rem Arial,sans-serif; letter-spacing:.12em; text-transform:uppercase; }
+.brand-mark { display:grid; width:34px; height:34px; place-items:center; color:white; background:var(--dark); border-radius:50%; transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+.brand:hover .brand-mark { transform: rotate(360deg) scale(1.1); }
+
+.navbar { display:flex; gap:24px; font:700 .8rem Arial,sans-serif; text-transform:uppercase; letter-spacing:.1em; flex-wrap: wrap; }
+.navbar a { position: relative; text-decoration:none; color:var(--muted); padding: 5px 0; transition: all .3s ease; }
+.navbar a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0%; height: 2px; background: var(--dark); transition: width 0.3s ease; border-radius: 2px; }
+.navbar a:hover, .navbar a.active { color:var(--dark); }
+.navbar a:hover::after, .navbar a.active::after { width: 100%; }
+
+/* --- SECTION PENGGANTI HALAMAN TERPISAH --- */
+.section-container { scroll-margin-top: 120px; padding: 60px 0; border-bottom: 1px dashed var(--line); }
+.section-container:last-child { border-bottom: none; }
+.section-title { font-size: 3rem; margin-bottom: 10px; line-height:1.1; }
+.section-subtitle { max-width: 600px; color: var(--muted); font-size: 1.05rem; margin-bottom: 40px; }
+
+/* Komponen Konten */
+.hero { display:grid; grid-template-columns:1.1fr .9fr; gap:48px; align-items:center; padding-bottom: 30px; }
+.eyebrow,.section-label { margin:0 0 12px; color:var(--dark); font:700 .72rem Arial,sans-serif; letter-spacing:.16em; text-transform:uppercase; }
+h1,h2,h3,p { margin-top:0; }
+h1.hero-title { max-width:590px; margin-bottom:20px; font-size:clamp(2.5rem,6vw,4.8rem); font-weight:500; letter-spacing:-.03em; line-height:1.05; }
+.intro { max-width:510px; margin-bottom:28px; color:var(--muted); font-size:1.05rem; }
+
+.hero-actions { display:flex; flex-wrap:wrap; gap:12px; }
+.button { display:inline-flex; align-items:center; gap:9px; padding:12px 24px; border:1px solid var(--dark); border-radius:30px; background:var(--dark); color:white; font:700 .84rem Arial,sans-serif; text-decoration:none; position: relative; overflow: hidden; transition: all .3s cubic-bezier(0.16, 1, 0.3, 1); }
+.button::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent); transition: all 0.6s ease; }
+.button:hover::before { left: 100%; }
+.button:hover { transform:translateY(-4px) scale(1.03); box-shadow:0 12px 25px #3c719955; }
+.button:active { transform:translateY(0) scale(0.97); box-shadow:0 5px 10px #3c719933; }
+.button.secondary { background:transparent; color:var(--dark); }
+.button.secondary:hover { background:var(--dark); color:white; }
+
+.portrait-frame { padding:14px; background:#ffffffb3; border:1px solid #ffffffe6; border-radius:22px; box-shadow:0 18px 45px #305d7a1f; transform:rotate(2deg); transition: transform 0.4s ease; }
+.portrait-frame:hover { transform:rotate(0deg) scale(1.02); box-shadow:0 25px 50px #305d7a2f; }
+.portrait-frame img { display:block; width:100%; height:310px; object-fit:cover; border-radius:14px; }
+.portrait-caption { margin:10px 4px 0; font-size:.72rem; }
+
+.content-grid { display:grid; grid-template-columns:1fr 1fr; gap:22px; }
+.panel { padding:30px; background:var(--white); border:1px solid var(--line); border-radius:14px; box-shadow:0 8px 25px #305d7a0f; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+.panel:hover { transform: translateY(-8px); box-shadow: 0 20px 40px #305d7a22; }
+.panel h2 { margin-bottom:20px; font-size:1.55rem; font-weight:500; }
+.panel img.panel-img { width: 100%; height: 220px; object-fit: cover; border-radius: 10px; margin-bottom: 20px; transition: 0.4s ease; }
+.panel:hover img.panel-img { transform: scale(1.03); }
+
+.timeline { margin:0; padding:0; list-style:none; }
+.timeline li { display:flex; gap:16px; padding:10px 0; border-bottom:1px solid var(--line); }
+.timeline li:last-child { border:0; }
+.timeline strong { min-width:52px; color:var(--dark); font:700 .76rem Arial,sans-serif; }
+.timeline span,.like-row dd { color:var(--muted); font-size:.95rem; }
+
+.likes { display:grid; gap:13px; margin:0; }
+.like-row { display:grid; grid-template-columns:86px 1fr; gap:12px; padding-bottom:13px; border-bottom:1px solid var(--line); }
+.like-row:last-child { padding-bottom:0; border:0; }
+.like-row dt { color:var(--dark); font:700 .74rem Arial,sans-serif; text-transform:uppercase; }
+.like-row dd { margin:0; }
+
+.quote { display:grid; grid-template-columns:1fr auto; gap:30px; align-items:center; margin:30px 0; padding:28px 30px; background:var(--pale); border-left:4px solid var(--blue); border-radius:0 14px 14px 0; transition: transform 0.3s ease; }
+.quote:hover { transform: translateX(8px); }
+.quote p { margin:0; font-size:1.35rem; font-style:italic; }
+.quote small { color:var(--muted); font: .72rem Arial,sans-serif; letter-spacing:.1em; text-transform:uppercase; }
+
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+.form-group { margin-bottom: 18px; }
+.form-group label { display: block; margin-bottom: 8px; font-size: 0.85rem; font-family: Arial, sans-serif; font-weight: bold; color: var(--dark); text-transform: uppercase; letter-spacing: 0.05em; }
+.form-group input, .form-group textarea { width: 100%; padding: 14px; border: 1px solid var(--line); border-radius: 12px; font-family: inherit; font-size: 1rem; color: var(--ink); outline: none; transition: all 0.3s; background: #fff; }
+.form-group input:focus, .form-group textarea:focus { border-color: var(--blue); box-shadow: 0 0 0 4px var(--pale); transform: translateY(-2px); }
+.contact-side-img { width: 100%; height: 100%; min-height: 350px; object-fit: cover; border-radius: 14px; box-shadow: 0 10px 30px #305d7a1a; transition: 0.3s ease; }
+.contact-side-img:hover { transform: scale(1.02); }
+
+footer { padding:30px 0; font-size:.75rem; text-align: center; }
+
+@media (max-width:720px) { 
+    .site-header { flex-direction: column; gap: 12px; padding: 16px; border-radius: 20px; top: 10px; }
+    .navbar { justify-content: center; gap: 15px; }
+    .hero { grid-template-columns:1fr; gap:30px; padding:20px 0 30px; } 
+    h1.hero-title, .section-title { font-size:3rem; } 
+    .portrait-frame { max-width:430px; margin:auto; transform:rotate(1deg); } 
+    .content-grid, .contact-grid { grid-template-columns:1fr; } 
+    .panel { padding:24px; } 
+    .quote { grid-template-columns:1fr; gap:12px; margin-bottom:34px; padding:24px; } 
+    .contact-side-img { min-height: 250px; margin-top: 20px; }
+}

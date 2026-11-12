@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCD-AI Food Delivery Recommender</title>
+    <!-- Tailwind CSS untuk Styling Modern -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Leaflet CSS untuk Peta Real -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        mcdRed: '#DA291C',
+                        mcdYellow: '#FFC72C',
+                        mcdDark: '#27251F'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-100 font-sans text-mcdDark">
+
+    <!-- Header Tema McDonald's -->
+    <header class="bg-mcdRed text-white shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <div class="bg-mcdYellow text-mcdRed font-black px-3 py-1 rounded-full text-2xl tracking-tighter shadow">M</div>
+                <h1 class="text-2xl font-black tracking-wide">MCD-AI <span class="text-mcdYellow">FOOD DELIVERY</span></h1>
+            </div>
+            <div class="text-sm font-semibold bg-white text-mcdRed px-4 py-1.5 rounded-full shadow-md animate-pulse">
+                🤖 AI Smart Engine Active
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8 grid grid-cols-1 lg:grid-cols-3 gap-8">
+        
+        <!-- Kolom Kiri: Form Input Preferensi & Riwayat Pembelian -->
+        <div class="space-y-6">
+            
+            <!-- Panel Input Preferensi AI -->
+            <div class="bg-white p-6 rounded-2xl shadow-xl border-t-4 border-mcdRed">
+                <h2 class="text-xl font-bold mb-4 text-mcdRed flex items-center gap-2">
+                    🍔 Atur Selera & Budgetmu
+                </h2>
+                <form id="aiForm" class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-bold text-gray-700 mb-1">Jam Lapar (0 - 23 Jam)</label>
+                        <input type="number" id="jam_lapar" min="0" max="23" value="12" required
+                            class="w-full px-4 py-2 border rounded-xl focus:ring-2 focus:ring-mcdRed outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold text-gray-700 mb-1">Maksimal Budget (Rp)</label>
+                        <input type="number" id="max_harga" value="40000" step="5000" required
+                            class="w-full px-4 py-2 border rounded-xl focus:ring-2 focus:ring-mcdRed outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold text-gray-700 mb-1">Kategori/Makanan Favorit (Pisahkan koma)</label>
+                        <input type="text" id="riwayat_favorit" value="Nasi, Fast Food, Mie Ayam" required
+                            class="w-full px-4 py-2 border rounded-xl focus:ring-2 focus:ring-mcdRed outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold text-gray-700 mb-1">Maksimal Radius (KM)</label>
+                        <input type="number" id="lokasi_radius_km" value="3.0" step="0.5" required
+                            class="w-full px-4 py-2 border rounded-xl focus:ring-2 focus:ring-mcdRed outline-none">
+                    </div>
+                    <button type="submit" 
+                        class="w-full bg-mcdRed hover:bg-red-700 text-mcdYellow font-black py-3 rounded-xl shadow-lg transition transform active:scale-95 text-lg">
+                        ✨ Cari Rekomendasi AI
+                    </button>
+                </form>
+            </div>
+
+            <!-- Panel Riwayat Pembelian User -->
+            <div class="bg-white p-6 rounded-2xl shadow-xl border-t-4 border-mcdYellow">
+                <h2 class="text-xl font-bold mb-3 text-mcdDark flex items-center gap-2">
+                    📜 Riwayat Pembelian Anda
+                </h2>
+                <div class="space-y-3" id="riwayatList">
+                    <div class="p-3 bg-gray-50 rounded-xl border flex justify-between items-center text-sm">
+                        <div>
+                            <p class="font-bold text-gray-800">Ayam Geprek Sambal Mercon</p>
+                            <span class="text-xs text-gray-500">Kemarin, 12:30 WIB</span>
+                        </div>
+                        <span class="text-green-600 font-bold">Rp 22.000</span>
+                    </div>
+                    <div class="p-3 bg-gray-50 rounded-xl border flex justify-between items-center text-sm">
+                        <div>
+                            <p class="font-bold text-gray-800">Bakso & Mie Ayam Semar</p>
+                            <span class="text-xs text-gray-500">3 Hari lalu</span>
+                        </div>
+                        <span class="text-green-600 font-bold">Rp 20.000</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Kolom Tengah & Kanan: Hasil Rekomendasi & Peta Real -->
+        <div class="lg:col-span-2 space-y-6">
+            
+            <!-- Peta Real (Leaflet Map) -->
+            <div class="bg-white p-4 rounded-2xl shadow-xl border">
+                <h3 class="font-bold text-lg mb-2 text-mcdRed flex items-center gap-2">📍 Peta Restoran Terdekat</h3>
+                <div id="map" class="w-full h-72 rounded-xl z-10"></div>
+            </div>
+
+            <!-- Hasil Rekomendasi AI Cards -->
+            <div class="bg-white p-6 rounded-2xl shadow-xl">
+                <h3 class="text-xl font-bold mb-4 text-mcdDark flex items-center justify-between">
+                    <span>🏆 Hasil Rekomendasi Terbaik AI</span>
+                    <span id="resultCount" class="text-sm bg-mcdYellow text-mcdDark px-3 py-1 rounded-full">0 Resto Ditemukan</span>
+                </h3>
+                
+                <div id="loading" class="hidden text-center py-8 text-mcdRed font-bold animate-pulse">
+                    🤖 AI sedang memproses preferensi & mencocokkan data resto...
+                </div>
+
+                <div id="rekomendasiContainer" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <!-- Data Resto akan dimasukkan secara dinamis via JavaScript -->
+                    <div class="col-span-2 text-center text-gray-400 py-8">
+                        Silakan klik tombol "Cari Rekomendasi AI" di sebelah kiri untuk mulai.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        // Inisialisasi Peta (Default pusat Jakarta / Area Dummy)
+        const map = L.map('map').setView([-6.200000, 106.816666], 13);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+
+        let markersLayer = L.layerGroup().addTo(map);
+
+        // Handle Submit Form via AJAX
+        document.getElementById('aiForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const loading = document.getElementById('loading');
+            const container = document.getElementById('rekomendasiContainer');
+            const resultCount = document.getElementById('resultCount');
+            
+            loading.classList.remove('hidden');
+            container.innerHTML = '';
+
+            const payload = {
+                jam_lapar: parseInt(document.getElementById('jam_lapar').value),
+                max_harga: parseInt(document.getElementById('max_harga').value),
+                riwayat_favorit: document.getElementById('riwayat_favorit').value,
+                lokasi_radius_km: parseFloat(document.getElementById('lokasi_radius_km').value)
+            };
+
+            try {
+                const response = await fetch('/api/rekomendasi', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                const result = await response.json();
+                
+                loading.classList.add('hidden');
+                markersLayer.clearLayers();
+
+                if (result.status === 'success' && result.data.length > 0) {
+                    resultCount.innerText = `${result.data.length} Resto Ditemukan`;
+                    
+                    let bounds = [];
+
+                    result.data.forEach((item, index) => {
+                        // Render Kartu Restoran
+                        const card = `
+                            <div class="bg-gray-50 border-2 border-red-100 hover:border-mcdRed p-4 rounded-xl shadow transition">
+                                <div class="flex justify-between items-start mb-2">
+                                    <span class="bg-mcdRed text-white text-xs font-bold px-2.5 py-1 rounded-full">Peringkat #${index + 1}</span>
+                                    <span class="text-xs font-bold bg-yellow-200 text-yellow-800 px-2 py-0.5 rounded">Skor: ${item.skor}</span>
+                                </div>
+                                <h4 class="font-bold text-lg text-mcdDark mb-1">${item.nama_resto}</h4>
+                                <p class="text-xs text-gray-600 mb-2">🏷️ ${item.kategori_makanan.join(', ')}</p>
+                                <div class="flex justify-between items-center text-sm font-semibold mt-3 pt-2 border-t">
+                                    <span class="text-green-600">Rp ${item.harga_rata_rata.toLocaleString('id-ID')}</span>
+                                    <span class="text-gray-500">📍 ${item.jarak_km} km</span>
+                                </div>
+                                <button onclick="tambahRiwayat('${item.nama_resto}', ${item.harga_rata_rata})" 
+                                    class="mt-3 w-full bg-mcdYellow hover:bg-yellow-400 text-mcdDark font-bold py-1.5 rounded-lg text-xs transition">
+                                    🛒 Pesan & Simpan Riwayat
+                                </button>
+                            </div>
+                        `;
+                        container.innerHTML += card;
+
+                        // Tambahkan Marker ke Peta Real Leaflet
+                        const marker = L.marker([item.lat, item.lng]).addTo(markersLayer)
+                            .bindPopup(`<b>${item.nama_resto}</b><br>Harga: Rp ${item.harga_rata_rata.toLocaleString()}<br>Jarak: ${item.jarak_km} km`);
+                        
+                        bounds.push([item.lat, item.lng]);
+                    });
+
+                    if (bounds.length > 0) {
+                        map.fitBounds(bounds, { padding: [50, 50] });
+                    }
+
+                } else {
+                    resultCount.innerText = `0 Resto Ditemukan`;
+                    container.innerHTML = `
+                        <div class="col-span-2 text-center text-red-500 font-semibold py-8 bg-red-50 rounded-xl">
+                            ❌ Maaf, tidak ada resto yang sesuai dengan kategori, budget, dan radius jarak Anda secara bersamaan.
+                        </div>
+                    `;
+                }
+
+            } catch (err) {
+                loading.classList.add('hidden');
+                alert('Terjadi kesalahan pada sistem AI.');
+            }
+        });
+
+        // Fungsi interaktif untuk menambah riwayat pembelian secara instan
+        function tambahRiwayat(namaResto, harga) {
+            const riwayatList = document.getElementById('riwayatList');
+            const waktuSekarang = "Baru saja";
+            
+            const itemHtml = `
+                <div class="p-3 bg-red-50 rounded-xl border border-red-200 flex justify-between items-center text-sm animate-bounce">
+                    <div>
+                        <p class="font-bold text-gray-800">${namaResto}</p>
+                        <span class="text-xs text-red-600">${waktuSekarang}</span>
+                    </div>
+                    <span class="text-green-600 font-bold">Rp ${harga.toLocaleString('id-ID')}</span>
+                </div>
+            `;
+            riwayatList.insertAdjacentHTML('afterbegin', itemHtml);
+            alert(`Berhasil memesan dari ${namaResto}! Masuk ke riwayat pembelian.`);
+        }
+    </script>
+</body>
+</html>

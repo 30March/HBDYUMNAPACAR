@@ -1,0 +1,18 @@
+body{
+    background-color: aqua;
+    /*display: flex;
+    align-items: center;*/
+}
+
+.LUTHFAN {
+    color: #0b0bfd;
+    background-color: #04fffb;
+    background-image: url("mongki.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 450px;
+    width: 650px;
+    height: 300px;
+    border-radius: 8px;
+    position: center;
+}

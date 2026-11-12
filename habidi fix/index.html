@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Sweet 14 Yumnaaa Cantiii </title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&family=Fredoka:wght@400;500;600&family=Sacramento&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- ===== Dekorasi Background Super Cute (Mocha Soft Gradient & Floating Elements) ===== -->
+    <div class="mocha-glow-bg" aria-hidden="true">
+        <div class="glow-orb orb-1"></div>
+        <div class="glow-orb orb-2"></div>
+        <div class="glow-orb orb-3"></div>
+    </div>
+    
+    <div class="floaters" id="floaters" aria-hidden="true"></div>
+    <canvas id="confetti" aria-hidden="true"></canvas>
+
+    <!-- ===== Musik ===== -->
+    <audio id="bgm" loop preload="auto">
+        <source src="music/lagu.mp3" type="audio/mpeg">
+    </audio>
+    <button class="music-btn" id="musicBtn" aria-label="Putar / hentikan musik" title="Musik">♪</button>
+
+    <main class="stage">
+
+        <!-- ============ HALAMAN 1 : MULAI ============ -->
+        <section class="page active" id="page-start">
+            <div class="card start-card glass-card">
+                <div class="card-badge"> Special Gift </div>
+                <div class="envelope-heart cute-bounce">💌</div>
+                <div class="cute-bear">🧸</div>
+                <p class="small-script">adaa hadiah kicik dari kakaa...</p>
+                <h1 class="start-title">SUDAA CYAPP??<br>PENCETT INIEE</h1>
+                <button class="btn btn-main pulse cute-hover" data-go="greeting">pencett inie sayangg 💖</button>
+            </div>
+        </section>
+
+        <!-- ============ HALAMAN 2 : HAPPY BIRTHDAY ============ -->
+        <section class="page" id="page-greeting">
+            <div class="card greeting-card glass-card">
+                <div class="card-badge">Sweet 14th</div>
+                <p class="small-script">untukk pacalll tersayang</p>
+                <h1 class="script-title">Happy Birthday</h1>
+
+                <div class="cake" id="cake" role="button" tabindex="0" aria-label="Tiup lilin">
+                    <div class="candles">
+                        <span class="candle"><i class="flame"></i></span>
+                        <span class="candle"><i class="flame"></i></span>
+                        <span class="candle"><i class="flame"></i></span>
+                    </div>
+                    <div class="layer l1"></div>
+                    <div class="layer l2"></div>
+                    <div class="layer l3"></div>
+                    <div class="plate"></div>
+                </div>
+                <p class="hint" id="cakeHint">✨ clickk kuenya bwat tiup lilin WKWKWK ✨</p>
+
+                <div class="text-box-soft">
+                    <p class="typed" id="typedText" aria-live="polite"></p>
+                </div>
+
+                <button class="btn btn-main hidden cute-hover" id="toMenuBtn" data-go="menu">lanjut sayangg ➜</button>
+            </div>
+        </section>
+
+        <!-- ============ HALAMAN 3 : MENU 3 TOMBOL ============ -->
+        <section class="page" id="page-menu">
+            <div class="card menu-card glass-card">
+                <div class="cute-sparkles"></div>
+                <p class="small-script">HAPPY BIRTHDAY MYLOVE</p>
+                <h2 class="section-title">About Youmnak</h2>
+
+                <div class="menu-grid">
+                    <button class="menu-item cute-hover" data-go="album" data-key="album">
+                        <span class="menu-ico">📸</span>
+                        <span class="menu-name">Album</span>
+                        <span class="menu-sub">Memory Of You</span>
+                        <span class="check">✓</span>
+                    </button>
+                    <button class="menu-item cute-hover" data-go="words" data-key="words">
+                        <span class="menu-ico">💌</span>
+                        <span class="menu-name">Beautiful Word</span>
+                        <span class="menu-sub">Little things in word</span>
+                        <span class="check">✓</span>
+                    </button>
+                    <button class="menu-item cute-hover" data-go="moment" data-key="moment">
+                        <span class="menu-ico">🎬</span>
+                        <span class="menu-name">Moment</span>
+                        <span class="menu-sub">Our Moment</span>
+                        <span class="check">✓</span>
+                    </button>
+                </div>
+
+                <button class="btn btn-main cute-hover" id="toEndBtn" data-go="end">lasttt sayangg ➜</button>
+            </div>
+        </section>
+
+        <!-- ============ SUB-HALAMAN 3A : ALBUM ============ -->
+        <section class="page" id="page-album">
+            <div class="card wide-card glass-card">
+                <button class="btn btn-ghost back cute-hover" data-go="menu">← kembali</button>
+                <div class="card-badge">Gallery</div>
+                <p class="small-script">Gallery</p>
+                <h2 class="section-title">Album Pacal Cantiiiikiyut</h2>
+                <div class="album" id="album"></div>
+                <p class="hint">klik fotonaa bwatt memperbesar yaww!!!</p>
+            </div>
+        </section>
+
+        <!-- ============ SUB-HALAMAN 3B : KATA-KATA INDAH ============ -->
+        <section class="page" id="page-words">
+            <div class="card wide-card glass-card">
+                <button class="btn btn-ghost back cute-hover" data-go="menu">← kembali</button>
+                <div class="card-badge">Sweet Notes</div>
+                <p class="small-script">kalna isi fikiran u doank,<br>jadi kaka bwat ketikan deh hehe</p>
+                <h2 class="section-title">Beautiful word like you</h2>
+
+                <button class="envelope cute-hover" id="envelope" aria-label="Buka surat">
+                    <span class="env-flap"></span>
+                    <span class="env-body"></span>
+                    <span class="env-seal">♥</span>
+                    <span class="env-text">klik untuk membuka surat</span>
+                </button>
+
+                <div class="letters hidden" id="letters">
+                    <div class="letter-track" id="letterTrack"></div>
+                    <div class="letter-nav">
+                        <button class="round-btn cute-hover" id="prevLetter" aria-label="Sebelumnya">‹</button>
+                        <div class="dots" id="letterDots"></div>
+                        <button class="round-btn cute-hover" id="nextLetter" aria-label="Berikutnya">›</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ SUB-HALAMAN 3C : MOMEN ============ -->
+        <section class="page" id="page-moment">
+            <div class="card wide-card glass-card">
+                <button class="btn btn-ghost back cute-hover" data-go="menu">← kembali</button>
+                <div class="card-badge">Sweet Memories</div>
+                <p class="small-script">Walau jarank beltemu, hati kita selalu beltemu kok sayang</p>
+                <h2 class="section-title">Happy Moment</h2>
+                <div class="video-frame cute-hover">
+                    <video id="momentVideo" controls playsinline preload="metadata">
+                        <source src="video/video.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-missing hidden" id="videoMissing">
+                        <span>🎞️</span>
+                        <p>Video belum ditambahkan.<br>Taruh file <b>video.mp4</b> di folder <b>video/</b></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ HALAMAN 4 : PENUTUP ============ -->
+        <section class="page" id="page-end">
+            <div class="card end-card glass-card">
+                <div class="card-badge">Forever Us</div>
+                <div class="big-heart cute-bounce">💗</div>
+                <h1 class="script-title">Happy Birthday</h1>
+                <p class="end-line">Love you sayang</p>
+                <div class="text-box-soft-end">
+                    <p class="end-sub">what i wish for in 2027<br>you still in my life. more time together.<br>more "when can i see you?" turning into "i'm on my way."<br>and a whole year of us choosing each other<br>thank youuu for coming into my life<br>IM LUCKY TO HAVE YOU MYLOVE 🤎</p>
+                </div>
+                <div class="end-actions">
+                    <button class="btn btn-main cute-hover" id="replayBtn">Ulangi lagii</button>
+                    <button class="btn btn-ghost cute-hover" data-go="menu">← Back to menu</button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ===== Lightbox foto ===== -->
+    <div class="lightbox hidden" id="lightbox">
+        <button class="lb-close cute-hover" id="lbClose" aria-label="Tutup">✕</button>
+        <button class="round-btn lb-prev cute-hover" id="lbPrev" aria-label="Foto sebelumnya">‹</button>
+        <figure>
+            <img id="lbImg" alt="">
+            <figcaption id="lbCap"></figcaption>
+        </figure>
+        <button class="round-btn lb-next cute-hover" id="lbNext" aria-label="Foto berikutnya">›</button>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

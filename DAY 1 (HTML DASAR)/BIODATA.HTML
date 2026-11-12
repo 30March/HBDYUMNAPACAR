@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="juduldeskripsi">
+        <h1 class="judul">Formulir Biodata</h1>
+        <p class="deskripsi">Silahkan isi formulir dibawah ini untuk mendaftar</p>
+    </div>
+
+    <form>
+        <label for="nama">Nama Lengkap:</label><br>
+        <input type="nama" name="nama" placeholder="Nama Lengkap" required><br>
+        
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" placeholder="Email" required><br>
+
+        <label for="password"> Password:</label><br>
+        <input type="password"  id="password" name="password" placeholder="Password" required><br>
+
+        <label for="tanggal lahir">Tanggal Lahir:</label><br>
+        <input type="date"  id="tanggal lahir" name="tanggal lahir" placeholder="Tanggal Lahir" required><br>
+
+        <label for="umur">Umur:</label><br>
+        <input type="number"  id="umur" name="umur" placeholder="Umur" required><br>
+
+        <label for="gender">Jenis Kelamin:</label><br>
+        <input type="radio" id="Laki-laki" name="gender" value="Laki-laki" required>
+            <label for="Laki-laki">Laki-laki</label><br>
+        <input type="radio" id="perempuan" name="gender" value="Perempuan" required>
+            <label for="perempuan">Perempuan:</label><br>
+        
+        <label for="hobi">Hobi:</label><br>
+        <input type="checkbox" id="membaca" name="hobi" value="membaca">
+            <label for="membaca">Membaca</label><br>
+        <input type="checkbox" id="menulis" name="hobi" value="menulis">
+            <label for="menulis">Menulis</label><br>
+        <input type="checkbox" id="olahraga" name="hobi" value="olahraga">
+            <label for="olahraga">Olahraga</label><br>
+    </form>
+</body>
+</html>

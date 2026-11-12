@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio Pribadi Luthfan </title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <!-- FLOATING NAVBAR -->
+    <header class="site-header">
+        <div class="brand"><span class="brand-mark">L</span><span>About Me</span></div>
+        <nav class="navbar">
+            <a href="#beranda" class="active">Beranda</a>
+            <a href="#about">About</a>
+            <a href="#portofolio">Portofolio</a>
+            <a href="#achievement">Achievement</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- 1. HALAMAN BERANDA -->
+        <section id="beranda" class="section-container">
+            <div class="hero" aria-labelledby="profile-title">
+                <div class="fade-in delay-1">
+                    <p class="eyebrow">Hello, welcome</p>
+                    <h1 id="profile-title" class="hero-title">Aku Luthfan<span style="color:var(--dark);">.</span></h1>
+                    <p class="intro">Muhammad Aufar Luthfan Ilmiansyah, siswa SMK Negeri 1 Balikpapan dari Jurusan Rekayasa Perangkat Lunak.</p>
+                    <div class="hero-actions">
+                        <a class="button" href="https://open.spotify.com/playlist/5G5rxn9FB8EohobfefSgmx?si=d93f11a920634788" target="_blank" rel="noopener">My Playlist</a>
+                        <a class="button secondary" href="#about">Kenali lebih dekat ↓</a>
+                    </div>
+                </div>
+                <figure class="portrait-frame fade-in delay-2">
+                    <img src="luthfan1.jpg" alt="Foto Luthfan 1">
+                    <figcaption class="portrait-caption">LUTHFAN · X RPL · 2026</figcaption>
+                </figure>
+            </div>
+            
+            <blockquote class="quote reveal">
+                <p>“Be yourself.”</p>
+                <small>Quote of the day</small>
+            </blockquote>
+        </section>
+
+        <!-- 2. HALAMAN ABOUT -->
+        <section id="about" class="section-container">
+            <div class="reveal">
+                <h1 class="section-title">Tentang Aku<span style="color:var(--dark);">.</span></h1>
+                <p class="section-subtitle">Sedikit cerita tentang perjalanan dan hal-hal sederhana yang membuatku tumbuh.</p>
+            </div>
+
+            <div class="content-grid">
+                <article class="panel reveal" style="transition-delay: 0.1s;">
+                    <img src="luthfan2.jpg" alt="Foto Luthfan 2" class="panel-img">
+                    <p class="section-label">Little things</p>
+                    <h2>Yang disukai</h2>
+                    <dl class="likes">
+                        <div class="like-row"><dt>Musik</dt><dd>Here With Me, Seasons, Love, If Only, 24/7</dd></div>
+                        <div class="like-row"><dt>Makanan</dt><dd>Nasi goreng, sate, dan nasi bakar</dd></div>
+                        <div class="like-row"><dt>Film</dt><dd>5 Centimeters per Second, A Silent Voice, Your Name</dd></div>
+                        <div class="like-row"><dt>Hobi</dt><dd>Fotografi Dan Writing</dd></div>
+                    </dl>
+                </article>
+
+                <article class="panel reveal" style="transition-delay: 0.2s;">
+                    <p class="section-label">The Journey</p>
+                    <h2>Riwayat Pendidikan</h2>
+                    <ol class="timeline">
+                        <li><strong>PAUD</strong><span>Tidak ada</span></li>
+                        <li><strong>TK</strong><span>TK Jamiyyatul Mustaqim</span></li>
+                        <li><strong>SD</strong><span>SD Muhammadiyah 1</span></li>
+                        <li><strong>SMP</strong><span>SMP Muhammadiyah 2</span></li>
+                        <li><strong>SMK</strong><span>SMK Negeri 1</span></li>
+                        <li><strong>Universitas</strong><span>Oxford University (Impian)</span></li>
+                    </ol>
+                </article>
+            </div>
+        </section>
+
+        <!-- 3. HALAMAN PORTOFOLIO -->
+        <section id="portofolio" class="section-container">
+            <div class="reveal">
+                <h1 class="section-title">Proyek & Karya<span style="color:var(--dark);">.</span></h1>
+                <p class="section-subtitle">Beberapa eksplorasi visual, kode, dan tugas yang sedang atau pernah kukerjakan.</p>
+            </div>
+
+            <div class="content-grid">
+                <article class="panel reveal" style="transition-delay: 0.1s;">
+                    <img src="luthfan3.jpg" alt="Foto Luthfan 3 Karya" class="panel-img">
+                    <p class="section-label">Web Development</p>
+                    <h2>Eksplorasi Digital</h2>
+                    <p class="intro" style="font-size: 0.95rem; margin-bottom: 0;">Fokus mematangkan fundamental HTML dan CSS (seperti integrasi layout navigasi), menjelajah sosial media tentang coding dan memcoba berbagai vibecoding project dengan bantuan AI Assistent</p>
+                </article>
+
+                <div style="display:flex; flex-direction:column; gap:22px;">
+                    <article class="panel reveal" style="flex:1; transition-delay: 0.2s;">
+                        <p class="section-label">Fotografi & Design</p>
+                        <h2>Potret Estetik</h2>
+                        <p class="intro" style="font-size: 0.95rem; margin-bottom: 0;">Minat pada street photography, landscape, potrait, dan suka menorehkan cerita dalam sebuah potret. Suka bermain dengan <em>color grading</em> di Lightroom, mengejar tone <em>teal and orange</em> bergaya film sinematik dan berbagai macam style</p>
+                    </article>
+
+                    <article class="panel reveal" style="flex:1; transition-delay: 0.3s;">
+                        <p class="section-label">Writing</p>
+                        <h2>Beautiful Words</h2>
+                        <p class="intro" style="font-size: 0.95rem; margin-bottom: 0;">Suka menulis dan mengetik kisah kehidupan atau hasil jurnalistik kedalam rangkaian kata indah, terinspirasi dari orang orang sastra yang dapat membuat syair indah dan banyak karya puitis.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. HALAMAN ACHIEVEMENT -->
+        <section id="achievement" class="section-container">
+            <div class="reveal">
+                <h1 class="section-title">Penghargaan<span style="color:var(--dark);">.</span></h1>
+                <p class="section-subtitle">Dedikasi, kompetisi, dan sertifikasi yang pernah aku capai sejauh ini.</p>
+            </div>
+
+            <div class="content-grid">
+                <article class="panel reveal" style="transition-delay: 0.1s;">
+                    <p class="section-label">Sertifikasi & Pelatihan</p>
+                    <h2>Martial Arts</h2>
+                    <ol class="timeline" style="margin-top:20px;">
+                        <li><strong>2025</strong><span>1st Beregu Putra Kejurkot Balikpapan</span></li>
+                        <li><strong>2024</strong><span>1st Beregu Putra Kejurkot Balikpapan</span></li>
+                        <li><strong>2024</strong><span>2nd Fighter Class G Balikpapan National Open</span></li>
+                        <li><strong>2023</strong><span>1st Fighter Class G Borneo Championship</span></li>
+                        <li><strong>2023</strong><span>3rd Fighter Class G Kejurda Tapak Suci Balikpapan</span></li>
+                        <li><strong>2022</strong><span>1st Fighter Class Free Samboja Open</span></li>
+                        <li><strong>2022</strong><span>3rd Fighter Class Free Kejurda Tapak Suci Samarinda</span></li>
+                        <li><strong>2022</strong><span>3rd Tunggal Putra O2SN Kecamatan Balikpapan Tengah</span></li>
+                    </ol>
+                </article>
+
+                <article class="panel reveal" style="transition-delay: 0.2s;">
+                    <img src="luthfan4.jpg" alt="Foto Luthfan 4 Achievement" class="panel-img">
+                    <p class="section-label">Kompetisi</p>
+                    <h2>Best Moment</h2>
+                    <p class="intro" style="font-size: 0.95rem; margin-bottom: 0;">Berhasil lolos seleksi tim IPSI Balikpapan untuk mewakili Kejurda Open Tournament Samarinda 2025, dan POPDA XVII Kaltim 2026 di PPU</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- 5. HALAMAN CONTACT -->
+        <section id="contact" class="section-container" style="border-bottom: none;">
+            <div class="reveal">
+                <h1 class="section-title">Mari Berkolaborasi<span style="color:var(--dark);">.</span></h1>
+                <p class="section-subtitle">Punya ide proyek, tawaran kerja sama, atau sekadar ingin menyapa? Jangan ragu mengirim pesan.</p>
+            </div>
+
+            <div class="contact-grid">
+                <article class="panel reveal" style="transition-delay: 0.1s;">
+                    <p class="section-label">Kirim Pesan</p>
+                    <form action="#" method="POST">
+                        <div class="form-group">
+                            <label for="name">Nama Lengkap</label>
+                            <input type="text" id="name" name="name" placeholder="Masukkan nama kamu" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Alamat Email</label>
+                            <input type="email" id="email" name="email" placeholder="nama@email.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Pesan Kamu</label>
+                            <textarea id="message" name="message" rows="5" placeholder="Tulis pesanmu di sini..." required></textarea>
+                        </div>
+                        <button type="submit" class="button" style="width: 100%; justify-content: center; font-size: 1rem; padding: 14px;">Kirim Pesan Sekarang ➔</button>
+                    </form>
+                </article>
+
+                <div class="reveal" style="transition-delay: 0.2s;">
+                    <img src="luthfan5.jpg" alt="Foto Luthfan 5 Contact" class="contact-side-img">
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="reveal">© 2026 Luthfan · Dibuat untuk portofolio pribadi</footer>
+</body>
+</html>

@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&display=swap');
+
+*{
+    margin: 0;
+    box-sizing: 0;
+    padding:0;
+}
+
+body {
+    background-color: #8f2b8c;
+    color: #e0e1dd;
+    font-family: "Dosis", sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+
+header h1 {
+    color: #ffffff;
+    font-size: 5rem;
+    margin-bottom: 15px;
+    text-align:center;
+}
+
+nav {
+    background: linear-gradient(135deg, #ff758c, #ff7eb3); 
+    width: 100%;               
+    box-sizing: border-box;    
+    padding: 15px 30px;        
+    margin: 0 0 20px 0;        
+    border-radius: 0;          
+    display: flex;
+    justify-content: space-around;  
+    align-items: center;
+    gap: 25px;                 
+    box-shadow: 0 4px 15px rgba(255, 117, 140, 0.3);
+}
+
+nav a {
+    color: #ffffff;            
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 8px 16px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+nav a:hover {
+    background-color: #8f2b8c;
+}
+
+main article {
+    background-color: #ff758c;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    margin-bottom: 20px;
+}
+
+main h2 {
+    color: #feffff;
+    margin-top: 0;
+}
+
+footer {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #ffff;
+    border-top: 1px solid #ffff;
+    padding-top: 10px;
+}
+
+ul li{
+    display:inline-block
+}
